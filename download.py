@@ -191,19 +191,13 @@ def download_journal(journal_url, fname, auth_by_cookie):
         df.to_csv(fname, encoding='utf8', index=False)
 
 
-def main(save_dir, auth_by_cookie=True, skip_open_access_and_pitt_authed=False):
+def main(save_dir, auth_by_cookie=False):
     r = get_retry("https://www.emerald.com/insight/sitemap/publications")
     soup = bs4.BeautifulSoup(r.text, 'html.parser')
     journal_section = soup.find('section', {'id': 'journals'})
     journal_url_list = [base_url+a['href'] for a in journal_section.find_all('a')]
 
     skip_issn = set()
-    if skip_open_access_and_pitt_authed:
-        # skip open access and pitt authed journals
-        import json
-        availability = json.load(open('availability.json', 'r'))
-        skip_issn = {issn for issn in availability if availability[issn] != 'no_access'}
-
     # find current progress to resume
     current_progress = 0
     for nth_journal, journal_url in enumerate(journal_url_list):
