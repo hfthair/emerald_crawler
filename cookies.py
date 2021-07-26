@@ -1,11 +1,13 @@
-# cookies for pitt auth
+# cookies for auth
+# 1. Login your account, make sure you have access to the full papers.
+# 2. Copy all the key/value pairs from the browser to this file (for chrome: developer tool -> Application -> Cookies)
 cookies = {
-    'authcookie_sessionHasStarted': 'true',
-    'ezproxy': 'YDqVghDxuLqZN6f',
-    'liblynx_fallback_auth': 'eyJpdiI6IjJcLzMrdjB4eDZLZlAyQVBaQ2J4ZmdRPT0iLCJ2YWx1ZSI6ImtyWklSc3I0cTZ1ZG1rVDhRQVlLVzY1TzBxYjViTWVLVDVXMkYrd3NZY25NRTZiTFE5cEZtcUhRU3BYY3NXSkZlbUxcL1liYUYxTWlVN2diaU9zS2V0UEFYNTFydUM3aVwvR0poVFNvTUlxXC8rUzRxYWQ1WUs5bk5hVURqQUloVHhaMDQxaVZuY0ZIWUxnVnZiMFZlR2IzYldmelY0OGI3bFowUUM4RmVTVnV2T3JlTmdDd0M4TmRqUEx3MDduYTdiUTZnbXk4YSt3Qkt6OHhxK0ZFVEFTTEpsY1Bzb2RFQkpcL2dCQSt6eVhcL3lHK0VaUk9Wb09CbCsxZkVEVGx5WG1hb3NGZU5qajM0ZldJZ3Q4THFPUWx1SXVxUHRPem80YnFSYVwva1FwVGRWaGozOFFGblkwbUQ4VnNwbHhhNkhzTGRDeUhPc2U4VkFodVJJV1lDbkhRV2djZXhoMjZ0UlBUSGJwVlJqeVwvTFBqMGJcL3d0MWlwcUdhVitJSCt5OTFqTzdhZlVwZ2p0TG5TRHBxYVBlSXV5bmNQSTFLQTZ0S3UwWHFHRUp5ZDh0UlRYR2ZWNEptcGdnQWptRG9HcGJZY1wvTDBkZEJqSHVDd0ZhbW50SGt5U3lPYjBFa2puUzB5VVIzMjdMT1V6QjdNY2h0OU1COEQ2S1g4eUlRRmtKRDNad3NaIiwibWFjIjoiNTE0ZTdlOGMwMmQxMTRhY2ZlZGZlNDEwMmMyYmVjODc1YTQ5NDlkYTdhNDFjNWQ1OTIyNjBhOWVjMDQ1ZWMwYiJ9',
-    'authcookie_loggedIn': 'true',
-    'XSRF-TOKEN': 'eyJpdiI6IkVUbkZGTTdpUTRyY01taCtNa09Dd2c9PSIsInZhbHVlIjoidW01VUZPbzY2QUp5U0NsVjNqRlM4Z25iMklPNmFSK0FpMzJtMmVRR2pwMVFCMDdEZ3NETDU3XC9sUStwSEZaeUciLCJtYWMiOiIzMTBkZmY1ZDI1MjRmMGQ5YThkMjdiZGI3YzhhNGUyMGQ4OTgwODYxNjlmZDFhYjU0MTA0OTE1ZDJmOTlkODA5In0%3D',
-    'laravel_session': 'eyJpdiI6IjBUSTY3QVFDS3ZHRkZ0ZU9iTmJ2QlE9PSIsInZhbHVlIjoiQU1DMHl5RUZtQUlDVGNiVEg2dlNFa2FDUDZZUlZpa2FcL0hlQjI4eTBaVFNMZ3NKU3RKUlQybVN2a3RTd2VvZVZXVWY0b1g4V2FlREkrMWpMZnBpTWFpR0VQN2VRcmJNYlBMbkJnb1FneFFFZGUxYWZJVlM4ZTlIS0lldDRibzFYIiwibWFjIjoiMzA2YzgzY2EyNmI0ODA3YjcwNmI2OWRkODhlODhjNmE5YzVkZGY4MmFmOGMxNGFlZjZmMzYxZDdiOWEyZTE5MSJ9',
-    'support_banner': 'COVID-19%3A%20information%20on%20accessing%20the%20platform%20off-site%20here.%20Please%20%3Ca%20href%3Dhttps%3A%2F%2Femeraldpublishinggroup.freshdesk.com%2Fsupport%2Fsolutions%2Farticles%2F36000213997-covid-19-planning-for-off-campus-access-in-the-event-of-university-closures%20target%3D_blank%3Evisit%20our%20page.%20%3C%2Fa%3E'
+    'authcookie_sessionHasStarted': 'sample value',
+    'ezproxy': 'sample value',
+    'liblynx_fallback_auth': 'sample value',
+    'authcookie_loggedIn': 'sample value',
+    'XSRF-TOKEN': 'sample value',
+    'laravel_session': 'sample value',
+    'support_banner': 'sample value'
 }
 
