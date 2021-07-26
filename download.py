@@ -32,9 +32,9 @@ def download_full_with_cookie(url):
             print(f" !! download full text via pitt fail, wait for {delay} minutes")
             time.sleep(delay*60)
     if 'Authentication Request' in r.text:
-        raise PermissionError("need login!!")
+        raise PermissionError("Authentication Requested for ({})".format(url))
     if 'To read the full version of this content please select one of the options below' in r.text:
-        raise FileNotFoundError("Not downloadable via Pitt")
+        raise FileNotFoundError("You accont can not download fulltext for ({})".format(url))
     return r.text
 
 
