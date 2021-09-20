@@ -17,3 +17,5 @@
 ## convert to jsonl
 > python csv2jsonl.py --csv_dir . --jsonl_filename emerald.jsonl
 
+## For BARTFacet Finetuning
+For fine tune code and model output, please visit this repository [Finetuning_BART_for_FACET_Summarization](https://github.com/khushsi/Finetuning_BART_for_FACET_Summarization)
