@@ -268,7 +268,7 @@ def main(csv_dir, jsonl_filename):
 
     total_row = 0
     for csv_file in os.listdir(csv_dir):
-        if csv_file.startswith('out') and csv_file.endswith('.csv'):
+        if csv_file.endswith('.csv'):
             print(f"read csv: {csv_file}")
             try:
                 df = pd.read_csv(os.path.join(csv_dir, csv_file), encoding='utf8').fillna('')

@@ -8,10 +8,11 @@ import bs4
 import pandas as pd
 import requests
 
-from cookies import cookies
+from cookies import pitt_cookies, whu_cookies
 
 base_url = "https://www.emerald.com"
-authorized_url = "https://www-emerald-com.pitt.idm.oclc.org"
+authorized_pitt_url = "https://www-emerald-com.pitt.idm.oclc.org" # pitt
+authorized_whu_url = "https://www.emerald.com" # whu
 
 with open('./ua.txt', 'r', encoding='utf8') as f:
     ualist = [i.strip() for i in f]
@@ -21,12 +22,21 @@ def randua():
     return {'headers': random.choice(ualist)}
 
 
-def download_full_with_cookie(url):
+def download_full_with_cookie(url, auth_inst="pitt"):
+    if auth_inst == "pitt":
+        authorized_url = authorized_pitt_url
+        auth_cookies = pitt_cookies
+    elif auth_inst == "whu":
+        authorized_url = authorized_whu_url
+        auth_cookies = whu_cookies
+    else:
+        raise NotImplementedError
+
     url = url.replace(base_url, authorized_url)
     r = None
     for delay in (1, 5, 10, 15):
         try:
-            r = requests.get(url, headers=randua(), cookies=cookies)
+            r = requests.get(url, headers=randua(), cookies=auth_cookies)
             break
         except:
             print(f" !! download full text via pitt fail, wait for {delay} minutes")
@@ -105,7 +115,7 @@ def check_access():
 
     return availability
 
-def download_journal(journal_url, fname, auth_by_cookie):
+def download_journal(journal_url, fname, auth_by_cookie, auth_inst):
     if os.path.isfile(fname) and os.path.getsize(fname) > 100:
         df = pd.read_csv(fname, encoding='utf8')
     else:
@@ -170,7 +180,7 @@ def download_journal(journal_url, fname, auth_by_cookie):
 
                 if 'To read the full version of this content please select one of the options below' in art_page_public.text:
                     if auth_by_cookie:
-                        full = download_full_with_cookie(art_url)
+                        full = download_full_with_cookie(art_url, auth_inst=auth_inst)
                         row['full_html'] = full
                     else:
                         raise FileNotFoundError('Journal is not publicly accessable.')
@@ -191,7 +201,7 @@ def download_journal(journal_url, fname, auth_by_cookie):
         df.to_csv(fname, encoding='utf8', index=False)
 
 
-def main(save_dir, auth_by_cookie=True, skip_open_access_and_pitt_authed=False):
+def main(save_dir, auth_by_cookie=True, auth_inst="pitt", skip_open_access_and_pitt_authed=False):
     r = get_retry("https://www.emerald.com/insight/sitemap/publications")
     soup = bs4.BeautifulSoup(r.text, 'html.parser')
     journal_section = soup.find('section', {'id': 'journals'})
@@ -222,12 +232,12 @@ def main(save_dir, auth_by_cookie=True, skip_open_access_and_pitt_authed=False):
             continue
 
         fname = os.path.join(save_dir, f'issn-{issn}-({nth_journal}).csv')
-        download_journal(journal_url, fname, auth_by_cookie)
+        download_journal(journal_url, fname, auth_by_cookie, auth_inst)
 
     return nth_journal
 
 
 if __name__ == '__main__':
     import fire
-    # --save_dir dir --auth_by_cookie True/False(need to set cookies.py if True)
+    # --save_dir dir --auth_by_cookie True/False(need to set cookies.py if True) --auth_inst {pitt, whu}
     fire.Fire(main)
