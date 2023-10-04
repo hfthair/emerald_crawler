@@ -1,3 +1,6 @@
+
+**New!!** The dataset is now available at [Hugging Face 🤗](https://huggingface.co/datasets/memray/FacetSum)
+
 # Download public paper from emerald
 
 ## Install requirements
